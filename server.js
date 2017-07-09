@@ -64,6 +64,10 @@ app.delete('/artists/:id', function (req, res) {
     res.sendStatus(200);
 });
 
-app.listen(3012, function () {
-    console.log('API app started');
+// app.listen(3012, function () {
+//     console.log('API app started');
+// });
+
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
