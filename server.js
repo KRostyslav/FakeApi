@@ -17,21 +17,17 @@ var pg = require('pg');
 
 var app = express();
 
-app.get('/db', function (request, response) {
-    pg.connect(process.env.URI, function(err, client, done) {
-        client.query('SELECT * FROM test_table', function(err, result) {
-            done();
-            if (err)
-            { console.error(err); response.send("Error " + err); }
-            else
-            { response.render('pages/db', {results: result.rows} ); }
-        });
-    });
-});
-
-
-// var client = new pg.Client(URI);
-// client.connect();
+// app.get('/db', function (request, response) {
+//     pg.connect(process.env.URI, function(err, client, done) {
+//         client.query('SELECT * FROM test_table', function(err, result) {
+//             done();
+//             if (err)
+//             { console.error(err); response.send("Error " + err); }
+//             else
+//             { response.render('pages/db', {results: result.rows} ); }
+//         });
+//     });
+// });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
