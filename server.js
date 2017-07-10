@@ -1,13 +1,26 @@
 /**
  * Created by krostyslav on 12.06.17.
  */
+const config = {
+    username: 'kxmmvragqrygfi',
+    password: '39c358751cc54f72c3e1f9ad14a50cfbeaa5daa4ebc3d079baa584e1164b74a5',
+    host: 'ec2-23-21-246-11.compute-1.amazonaws.com',
+    port: '5432',
+    database: 'dfr4velvir2hae'
+};
+
+const URI = 'postgres://kxmmvragqrygfi:39c358751cc54f72c3e1f9ad14a50cfbeaa5daa4ebc3d079baa584e1164b74a5@ec2-23-21-246-11.compute-1.amazonaws.com:5432/dfr4velvir2hae';
+
 var express = require('express');
 var bodyParser = require('body-parser');
+var pg = require('pg');
 
 var app = express();
+var client = new pg.Client(URI);
+client.connect();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 var artists = [
     {
@@ -68,6 +81,6 @@ app.delete('/artists/:id', function (req, res) {
 //     console.log('API app started');
 // });
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(process.env.PORT || 3000, function () {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
