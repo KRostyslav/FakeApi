@@ -75,8 +75,9 @@ app.delete('/artists/:id', function (req, res) {
     res.sendStatus(200);
 });
 
-app.listen(3012, function () {
+app.listen(process.env.PORT || 3012, function () {
     console.log('Fake API app started');
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
 // MongoClient.connect('mongodb://localhost:27017/fakeApi', function (err, database) {
